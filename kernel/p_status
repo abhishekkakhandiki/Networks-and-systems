@@ -1,0 +1,51 @@
+kernel/api/access.c:        return vmmap_read(curproc->p_vmmap, uaddr, kaddr, nbytes);
+kernel/api/access.c:        return vmmap_write(curproc->p_vmmap, uaddr, kaddr, nbytes);
+kernel/api/elf32.c:        vmmap_t *tempmap = curproc->p_vmmap;
+kernel/api/elf32.c:        curproc->p_vmmap = map;
+kernel/api/elf32.c:        curproc->p_vmmap->vmm_proc = curproc;
+kernel/api/elf32.c:        pt_unmap_range(curproc->p_pagedir, USER_MEM_LOW, USER_MEM_HIGH);
+kernel/api/elf32.c:        curproc->p_brk = proghigh;
+kernel/api/elf32.c:        curproc->p_start_brk = proghigh;
+kernel/api/elf32.c:        strncpy(curproc->p_comm, filename, PROC_NAME_LEN);
+kernel/api/syscall.c:            curproc->p_pid, sysnum, sysnum, args, args);
+kernel/api/syscall.c:                    "(0x%p)\n", curthr, curproc->p_pid, curproc);
+kernel/api/syscall.c:        dbginfo(DBG_VMMAP, vmmap_mapping_info, curproc->p_vmmap);
+kernel/api/syscall.c:                    "(%p)\n", curthr, curproc->p_pid, curproc);
+kernel/api/syscall.c:            curproc->p_pid, sysnum, sysnum, ret, ret);
+kernel/api/syscall.c:                        return curproc->p_pid;
+kernel/fs/file.c:                f = curproc->p_files[fd];
+kernel/fs/namev.c: * curproc->p_cwd.  If pathname[0] == '/', ignore base and start with
+kernel/fs/open.c:            "for pid %d\n", curproc->p_pid);
+kernel/fs/vfs_syscall.c: * Zero curproc->p_files[fd], and fput() the file. Return 0 on success
+kernel/main/kmain.c:	KASSERT(PID_IDLE == curproc->p_pid);
+kernel/main/kmain.c:	vput(curproc->p_cwd);
+kernel/main/kmain.c:		while(!list_empty(&curproc->p_children)) {
+kernel/mm/pframe.c:        KASSERT(PID_IDLE == curproc->p_pid); /* Should call from idleproc */
+kernel/mm/pframe.c:        KASSERT(curproc && (PID_IDLE == curproc->p_pid)
+kernel/proc/faber_test.c:	dbg(DBG_TEST, "Wakeme cancelled?! pid (%d)\n", curproc->p_pid);
+kernel/proc/faber_test.c:	dbg(DBG_TEST, "Wakeme returned?! pid (%d)\n", curproc->p_pid);
+kernel/proc/faber_test.c:	dbg(DBG_TEST, "Mutex cancelled? %d", curproc->p_pid);
+kernel/proc/faber_test.c:    dbg(DBG_TEST, "Mutex not cancelled? %d", curproc->p_pid);
+kernel/proc/faber_test.c:    list_iterate_begin(&curproc->p_children, p, proc_t, p_child_link) {
+kernel/proc/proc.c:		KASSERT(PID_INIT != p->p_pid || PID_IDLE == curproc->p_pid);
+kernel/proc/proc.c:		list_insert_head(&curproc->p_children, &p->p_child_link);
+kernel/proc/proc.c:	KASSERT(1 <= curproc->p_pid); /* this process should not be idle process */
+kernel/proc/proc.c:	KASSERT(NULL != curproc->p_pproc); /* this process should have parent process */
+kernel/proc/proc.c:	KASSERT(NULL != curproc->p_pproc); /* this process should have parent process */
+kernel/proc/proc.c:	curproc->p_status = status;
+kernel/proc/proc.c:	curproc->p_state = PROC_DEAD;
+kernel/proc/proc.c:	if (!sched_queue_empty(&curproc->p_pproc->p_wait))
+kernel/proc/proc.c:		sched_broadcast_on(&curproc->p_pproc->p_wait);
+kernel/proc/proc.c:	if (curproc->p_pid != 0 && curproc->p_pproc->p_pid != 0) {
+kernel/proc/proc.c:		proc_kill(curproc, curproc->p_status);
+kernel/proc/proc.c:	curproc->p_status = (int)(int*)retval;
+kernel/proc/proc.c:	proc_cleanup(curproc->p_status);
+kernel/proc/proc.c:	if(list_empty(&curproc->p_children)) {
+kernel/proc/proc.c:			list_iterate_begin(&curproc->p_children, proc, proc_t, p_child_link)
+kernel/proc/proc.c:						sched_sleep_on(&curproc->p_wait);
+kernel/proc/proc.c:		list_iterate_begin(&curproc->p_children, proc, proc_t, p_child_link)
+kernel/proc/proc.c:											sched_sleep_on(&curproc->p_wait);
+kernel/proc/proc.c:	curproc->p_status = status;
+kernel/proc/proc.c:	list_iterate_begin(&curproc->p_threads, thr, kthread_t,kt_plink)
+kernel/vm/shadowd.c:        KASSERT(NULL != curproc && (PID_IDLE == curproc->p_pid));
+kernel/vm/shadowd.c:        KASSERT(PID_IDLE == curproc->p_pid);

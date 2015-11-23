@@ -1,0 +1,10 @@
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/main/gdt.gdb
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/mm/pagetable.gdb
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/proc/kthread.gdb
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/vm/vmmap.gdb
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/mm/memcheck.py
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/mm/page.py
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/mm/slab.py
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/proc/proc.py
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/util/debug.py
+source /home/weenix-assignment/kernel1_submitted_v1/kernel/util/list.py
